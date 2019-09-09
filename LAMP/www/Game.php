@@ -5,7 +5,7 @@ class Game
   private $sticksLeft = 21;
 
   public $usedSticks;
-
+  
   public function __construct()
   {
     $this->startSession();
@@ -20,17 +20,17 @@ class Game
     if (!isset($_SESSION["removedSticks"])) {
       $_SESSION["removedSticks"] = [];
     }
-    if () {
+    
     if (isset($_POST['selectSticks'])) {
       array_push($_SESSION["removedSticks"], $_POST['selectSticks']);
       $this->usedSticks = $this->getRemovedSticks();
     }
 
     if (isset($_POST['reset'])) {
-      $this->resetSession();
+        $this->resetSession();
     }
   }
-  }
+
 
   public function resetSession()
   {
@@ -46,6 +46,7 @@ class Game
         <option value='1'>1</option>
         <option value='2'>2</option>
         <option value='3'>3</option>
+        <option value='4'>4</option>
       </select>
       <input type='submit'>
     </form>
