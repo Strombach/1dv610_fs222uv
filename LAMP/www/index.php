@@ -13,4 +13,5 @@ $sticksLeft
   <input type='submit'>
 </form>";
 
-echo $_POST["selectSticks"];
+// echo $_POST["selectSticks"];
+echo $sticksLeft - $_POST["selectSticks"];
