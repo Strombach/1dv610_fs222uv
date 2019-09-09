@@ -1,43 +1,27 @@
 <?php
+require_once("Game.php");
+$game = new Game();
+?>
 
-session_start();
+<!DOCTYPE html>
+<html lang="en">
 
-$sticksLeft = 21;
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Code base metrics</title>
+</head>
 
-$_SESSION["sticksLeft"] = $sticksLeft;
+<body>
+    <header>
+        <h1>21 - Stick game</h1>
+    </header>
+    <div class="main content">
+        <?php
+        echo $game->show();
+        ?>
+    </div>
+</body>
 
-if (!isset($_SESSION["removedSticks"])) {
-  $_SESSION["removedSticks"] = [];
-}
-
-// The form for selecting how many sticks to remove
-echo "
-<p>Sticks left= $sticksLeft</p>
-<form action='' method='POST'>
-  <select name='selectSticks'>
-    <option value='1'>1</option>
-    <option value='2'>2</option>
-    <option value='3'>3</option>
-  </select>
-  <input type='submit'>
-</form>";
-
-echo "
-<form action='' method='POST'>
-  <button name=type='button'>Reset</button>
-</form>";
-
-if(isset($_POST['selectSticks'])) {
-  array_push($_SESSION["removedSticks"], $_POST['selectSticks']);
-  displayRemovedSticks();
-}
-
-// ******** You should write a condition that checks of the form for reset
-// is pressed and Posted. In that case destroy session.
-
-// Echoes every value in the session array.
-function displayRemovedSticks() {
-  foreach($_SESSION["removedSticks"] as $removedStick) {
-    echo $removedStick;
-  }
-}
+</html>
